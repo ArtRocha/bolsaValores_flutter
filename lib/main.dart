@@ -47,7 +47,7 @@ String cacVariacao='';
         backgroundColor: Colors.blueAccent,
         centerTitle: true,
       ),
-      body: FutureBuilder(
+      body: FutureBuilder<Map>(
         future: pegarDados(),
         builder: (context, snapshot){
           switch (snapshot.connectionState) {
@@ -77,36 +77,53 @@ String cacVariacao='';
               );
 
               }else{
-                final data = snapshot.data! as Map<String, dynamic>;
                 //ibovespa
-                ibovespaNome = data['results']['stocks']['IBOVESPA']['name'].toString();
-                ibovespaLocal = data['results']['stocks']['IBOVESPA']['location'].toString();
-                ibovespaPonto = data['results']['stocks']['IBOVESPA']['points'].toString();
-                ibovespaVariacao = data['results']['stocks']['IBOVESPA']['variation'].toString();
+                ibovespaNome =  snapshot.data!['results']['stocks']['IBOVESPA']['name'].toString();
+                ibovespaLocal =  snapshot.data!['results']['stocks']['IBOVESPA']['location'].toString();
+                ibovespaPonto =  snapshot.data!['results']['stocks']['IBOVESPA']['points'].toString();
+                ibovespaVariacao =  snapshot.data!['results']['stocks']['IBOVESPA']['variation'].toString();
                 //nasdaq
-                nasaNome = data['results']['stocks']['NASDAQ']['name'].toString();
-                nasaLocal = data['results']['stocks']['NASDAQ']['location'].toString();
-                nasaPonto = data['results']['stocks']['NASDAQ']['points'].toString();
-                nasaVariacao = data['results']['stocks']['NASDAQ']['variation'].toString();
-                //  nikkei
-                nikkeiNome = data['results']['stocks']['NIKKEI']['name'].toString();
-                nikkeiLocal = data['results']['stocks']['NIKKEI']['location'].toString();
-                nikkeiVariacao = data['results']['stocks']['NIKKEI']['variation'].toString();
+                nasaNome =  snapshot.data!['results']['stocks']['NASDAQ']['name'].toString();
+                nasaLocal =  snapshot.data!['results']['stocks']['NASDAQ']['location'].toString();
+                nasaPonto =  snapshot.data!['results']['stocks']['NASDAQ']['points'].toString();
+                nasaVariacao =  snapshot.data!['results']['stocks']['NASDAQ']['variation'].toString();
+                //nikkei
+                nikkeiNome =  snapshot.data!['results']['stocks']['NIKKEI']['name'].toString();
+                nikkeiLocal =  snapshot.data!['results']['stocks']['NIKKEI']['location'].toString();
+                nikkeiVariacao =  snapshot.data!['results']['stocks']['NIKKEI']['variation'].toString();
                 //CAC
-                cacNome = data['results']['stocks']['CAC']['name'].toString();
-                cacLocal = data['results']['stocks']['CAC']['location'].toString();
-                cacVariacao = data['results']['stocks']['CAC']['variation'].toString();
+                cacNome =  snapshot.data!['results']['stocks']['CAC']['name'].toString();
+                cacLocal =  snapshot.data!['results']['stocks']['CAC']['location'].toString();
+                cacVariacao =  snapshot.data!['results']['stocks']['CAC']['variation'].toString();
 
                 return SingleChildScrollView(
                   padding: EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
-                      Image.asset('images/bolsa.jpg',
+                      Image.asset('images/borsa.jpg',
                       fit: BoxFit.cover,
-                      height: 100,),
+                      height: 200,),
                       Divider(),
                       Text(nasaNome,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
+                      Text(nasaLocal,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
+                      Text(nasaPonto,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
+                      Text(nasaVariacao,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.blueAccent,
@@ -119,13 +136,43 @@ String cacVariacao='';
                         color: Colors.blueAccent,
                         fontSize: 25,
                       ),),
+                      Text(ibovespaLocal,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
+                      Text(ibovespaPonto,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
+                      Text(ibovespaVariacao,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
                       Divider(),
                       Text(cacNome,
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.blueAccent,
                         fontSize: 25,
-                      ),)
+                      ),),
+                      Text(cacLocal,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
+                      Text(cacVariacao,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontSize: 25,
+                      ),),
                       
                     ],
 
